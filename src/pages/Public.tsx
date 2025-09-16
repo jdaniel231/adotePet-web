@@ -1,10 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PetCard from '../components/PetCard';
 import petImage from '../assets/ChatGPT Image 15 de set. de 2025, 15_43_48.png';
 
-
 const Public: React.FC = () => {
+  const pets = [
+    { image: petImage, name: 'Max', breed: 'Golden Retriever' },
+    { image: petImage, name: 'Bella', breed: 'Labrador' },
+    { image: petImage, name: 'Charlie', breed: 'Beagle' },
+    { image: petImage, name: 'Lucy', breed: 'Poodle' },
+    { image: petImage, name: 'Cooper', breed: 'Bulldog' },
+    { image: petImage, name: 'Luna', breed: 'Siberian Husky' },
+    { image: petImage, name: 'Rocky', breed: 'German Shepherd' },
+    { image: petImage, name: 'Daisy', breed: 'Rottweiler' },
+    { image: petImage, name: 'Milo', breed: 'Shih Tzu' },
+    { image: petImage, name: 'Sadie', breed: 'Chihuahua' },
+    { image: petImage, name: 'Toby', breed: 'Boxer' },
+    { image: petImage, name: 'Zoe', breed: 'Doberman' },
+  ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const petsPerPage = 6;
+
+  const indexOfLastPet = currentPage * petsPerPage;
+  const indexOfFirstPet = indexOfLastPet - petsPerPage;
+  const currentPets = pets.slice(indexOfFirstPet, indexOfLastPet);
+
+  const totalPages = Math.ceil(pets.length / petsPerPage);
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   return (
     <>
       <section
@@ -27,7 +62,13 @@ const Public: React.FC = () => {
       <main id="adoption" className="py-16 px-8">
         <h2 className="text-4xl text-center mb-8">Animais para Adoção</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <PetCard />
+          {currentPets.map((pet, index) => (
+            <PetCard key={index} pet={pet} />
+          ))}
+        </div>
+        <div className="flex justify-center mt-8">
+          <button onClick={prevPage} disabled={currentPage === 1} className="bg-blue-500 text-white py-2 px-4 rounded-md mr-4 disabled:bg-gray-400">Anterior</button>
+          <button onClick={nextPage} disabled={currentPage === totalPages} className="bg-blue-500 text-white py-2 px-4 rounded-md disabled:bg-gray-400">Próximo</button>
         </div>
       </main>
 
