@@ -1,13 +1,12 @@
 
 import './App.css'
+import Public from './pages/Public'
 
 function App() {
   
 
   return (
-    <div>
-      <h1>Vite + React</h1>
-    </div>
+    <Public />
   )
 }
 
