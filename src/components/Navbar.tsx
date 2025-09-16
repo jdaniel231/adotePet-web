@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
@@ -9,6 +10,7 @@ const Navbar: React.FC = () => {
         <li><a href="#about-us" className="font-bold text-gray-800 hover:text-blue-500 transition-colors">Sobre</a></li>
         <li><a href="#adoption" className="font-bold text-gray-800 hover:text-blue-500 transition-colors">Adoção</a></li>
         <li><a href="#testimonials" className="font-bold text-gray-800 hover:text-blue-500 transition-colors">Depoimentos</a></li>
+        <li><Link to="/login" className="font-bold text-gray-800 hover:text-blue-500 transition-colors">Login</Link></li>
       </ul>
     </nav>
   );

@@ -50,7 +50,10 @@ const Public: React.FC = () => {
         <div className="relative z-10">
           <h1 className="text-6xl mb-4">Adote um Amigo</h1>
           <p className="text-2xl mb-8">Transforme uma vida e a sua também</p>
-          <Link to="/login" className="bg-red-500 text-white py-4 px-8 rounded-md text-lg cursor-pointer transition-colors hover:bg-red-700 no-underline">Quero Adotar</Link>
+          <div className="flex gap-4 justify-center">
+            <Link to="/login/adopter" className="bg-red-500 text-white py-4 px-8 rounded-md text-lg cursor-pointer transition-colors hover:bg-red-700 no-underline">Quero Adotar</Link>
+            <Link to="/login/donor" className="bg-green-500 text-white py-4 px-8 rounded-md text-lg cursor-pointer transition-colors hover:bg-green-700 no-underline">Quero Doar</Link>
+          </div>
         </div>
       </section>
 

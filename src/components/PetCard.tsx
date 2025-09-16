@@ -13,7 +13,7 @@ const PetCard: React.FC<{ pet: Pet }> = ({ pet }) => {
       <img src={`https://picsum.photos/seed/${pet.name}/320/240`} alt={pet.name} className="w-full h-48 object-cover rounded-lg mb-4" />
       <h3 className="text-2xl mb-2">{pet.name}</h3>
       <p className="mb-4">Raça: {pet.breed}</p>
-      <Link to="/login" className="bg-blue-500 text-white py-2 px-6 rounded-md cursor-pointer transition-colors hover:bg-blue-700 no-underline">Adotar</Link>
+      <Link to="/login/adopter" className="bg-blue-500 text-white py-2 px-6 rounded-md cursor-pointer transition-colors hover:bg-blue-700 no-underline">Adotar</Link>
     </div>
   );
 };
