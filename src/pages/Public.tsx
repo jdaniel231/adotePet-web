@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PetCard from '../components/PetCard';
+import TestimonialCard from '../components/TestimonialCard';
 import petImage from '../assets/ChatGPT Image 15 de set. de 2025, 15_43_48.png';
 
 const Public: React.FC = () => {
@@ -17,6 +18,12 @@ const Public: React.FC = () => {
     { image: petImage, name: 'Sadie', breed: 'Chihuahua' },
     { image: petImage, name: 'Toby', breed: 'Boxer' },
     { image: petImage, name: 'Zoe', breed: 'Doberman' },
+  ];
+
+  const testimonials = [
+    { image: petImage, name: 'Ana', text: 'Adotar o Max foi a melhor decisão da minha vida! Ele trouxe muita alegria para nossa família.' },
+    { image: petImage, name: 'João', text: 'O processo de adoção foi super tranquilo e a equipe foi muito atenciosa. Recomendo a todos!' },
+    { image: petImage, name: 'Maria', text: 'Estava com medo de não conseguir cuidar de um pet, mas o suporte que recebi foi incrível. A Bella é um amor!' },
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,16 +50,15 @@ const Public: React.FC = () => {
   return (
     <>
       <section
-        className="relative flex items-center justify-center h-screen bg-cover bg-center text-white text-center"
-        style={{ backgroundImage: `url(${petImage})` }}
+        className="relative flex items-center justify-center h-screen bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center"
       >
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
         <div className="relative z-10">
           <h1 className="text-6xl mb-4">Adote um Amigo</h1>
           <p className="text-2xl mb-8">Transforme uma vida e a sua também</p>
           <div className="flex gap-4 justify-center">
-            <Link to="/login/adopter" className="bg-red-500 text-white py-4 px-8 rounded-md text-lg cursor-pointer transition-colors hover:bg-red-700 no-underline">Quero Adotar</Link>
-            <Link to="/login/donor" className="bg-green-500 text-white py-4 px-8 rounded-md text-lg cursor-pointer transition-colors hover:bg-green-700 no-underline">Quero Doar</Link>
+            <Link to="/login/adopter" className="bg-blue-600 text-white py-4 px-8 rounded-md text-lg cursor-pointer transition-colors hover:bg-blue-700 no-underline">Quero Adotar</Link>
+            <Link to="/login/donor" className="bg-gray-600 text-white py-4 px-8 rounded-md text-lg cursor-pointer transition-colors hover:bg-gray-700 no-underline">Quero Doar</Link>
           </div>
         </div>
       </section>
@@ -77,7 +83,11 @@ const Public: React.FC = () => {
 
       <section id="testimonials" className="bg-gray-100 py-16 px-8 text-center">
         <h2 className="text-4xl mb-8">Depoimentos</h2>
-        {/* Placeholder for testimonials */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard key={index} testimonial={testimonial} />
+          ))}
+        </div>
       </section>
     </>
   );
