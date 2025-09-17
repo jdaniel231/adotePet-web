@@ -1,24 +1,45 @@
 
 import React, { useState } from 'react';
 
-const LoginDonor = () => {
+const RegisterDonor = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Lógica de autenticação aqui
+    // Lógica de cadastro aqui
+    console.log('Nome:', name);
     console.log('Email:', email);
     console.log('Senha:', password);
+    console.log('Confirmar Senha:', confirmPassword);
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
-          Login do Doador
+          Cadastro de Adotante
         </h2>
         <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="name"
+              className="block text-gray-700 text-sm font-semibold mb-2"
+            >
+              Nome
+            </label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Seu nome completo"
+              required
+            />
+          </div>
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -36,7 +57,7 @@ const LoginDonor = () => {
               required
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-4">
             <label
               htmlFor="password"
               className="block text-gray-700 text-sm font-semibold mb-2"
@@ -53,29 +74,38 @@ const LoginDonor = () => {
               required
             />
           </div>
-          <div className="mb-4 text-center">
-            <a
-              href="#"
-              className="text-sm font-medium text-blue-600 hover:underline"
+          <div className="mb-6">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-gray-700 text-sm font-semibold mb-2"
             >
-              Esqueceu a senha?
-            </a>
+              Confirmar Senha
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="••••••••"
+              required
+            />
           </div>
           <button
             type="submit"
-            className="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300"
+            className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
           >
-            Entrar
+            Cadastrar
           </button>
         </form>
         <div className="mt-6 text-center">
           <p className="text-gray-600 text-sm">
-            Não tem uma conta?{' '}
+            Já tem uma conta?{' '}
             <a
-              href="/register/donor"
+              href="/login/adopter"
               className="font-semibold text-blue-600 hover:underline"
             >
-              Criar conta
+              Faça login
             </a>
           </p>
         </div>
@@ -84,4 +114,4 @@ const LoginDonor = () => {
   );
 };
 
-export default LoginDonor;
+export default RegisterDonor;

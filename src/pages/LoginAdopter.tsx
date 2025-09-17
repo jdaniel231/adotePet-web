@@ -72,7 +72,7 @@ const LoginAdopter = () => {
           <p className="text-gray-600 text-sm">
             Não tem uma conta?{' '}
             <a
-              href="#"
+              href="/register/adopter"
               className="font-semibold text-blue-600 hover:underline"
             >
               Criar conta
